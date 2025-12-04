@@ -97,7 +97,7 @@ export default function ViewProjectDetails() {
             {/* <h2 className="text-lg font-semibold mb-4">Milestones</h2> */}
             <div className="flex ">
               {/* Milestone Navigation */}
-              <div className="space-y-2 py-2">
+              <div className="space-y-2 position-sticky top-10">
                 {project.milestones?.map((milestone, index) => {
                   const milestoneNumber = index + 1;
                   const isSelected = milestoneNum === milestoneNumber.toString();
@@ -182,19 +182,29 @@ export default function ViewProjectDetails() {
                             </div>
                             <div className="flex items-center justify-between pt-2">
                               <div className="flex items-center gap-2">
-                                <button className="w-7 h-7 bg-green-100 border border-primary rounded flex items-center justify-center hover:bg-green-200">
+                                <button 
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Click here to ask your questions"
+                                className="w-7 h-7 bg-green-100 border border-primary rounded flex items-center justify-center hover:bg-green-200">
                                   <HelpCircle size={15} className="text-primary" />
                                 </button>
                                 <span className="text-black text-sm">or</span>
-                                <button className="w-7 h-7 bg-green-100 border border-primary rounded flex items-center justify-center hover:bg-green-200">
+                                <button data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Click here to Call details"
+                                className="w-7 h-7 bg-green-100 border border-primary rounded flex items-center justify-center hover:bg-green-200">
                                   <Phone size={15} className="text-primary" />
                                 </button>
                                 <span className="text-black text-sm">or</span>
-                                <button className="w-7 h-7 bg-red-100 border border-red-400 rounded flex items-center justify-center hover:bg-red-200">
+                                <button data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Click here to Request for Revisions on the work received"
+                                className="w-7 h-7 bg-red-100 border border-red-400 rounded flex items-center justify-center hover:bg-red-200">
                                   <RotateCw size={15} className="text-danger" />
                                 </button>
                               </div>
-                              <button className="inline-flex items-center f-12 px-2 py-1 bg-primary rounded hover:bg-teal-700">
+                              <button
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content="Click here to Approve the work"
+                               className="inline-flex items-center f-12 px-2 py-1 bg-primary rounded hover:bg-teal-700">
                                 <ThumbsUp size={16} className="mr-2" />
                                 Approve the Work
                               </button>
