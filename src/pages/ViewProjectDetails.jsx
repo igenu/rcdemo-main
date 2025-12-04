@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronsRight, File, Info, Phone, RotateCw, ThumbsUp, HelpCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronsRight, File, Info, Phone, RotateCw, ThumbsUp, HelpCircle, ArrowLeftCircle } from "lucide-react";
 import projects from "../data/projects";
 import BreadCrump from "../components/Breadcrumb"
 
@@ -22,21 +22,21 @@ export default function ViewProjectDetails() {
   }
 
   return (
-    <div className="p-3 space-y-6">
+    <div className=" space-y-6">
       <BreadCrump />
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-800">Manage Project</h1>
+        <h1 className="text-[18px] font-semibold text-gray-800">Manage Project</h1>
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center px-2 py-1 rounded bg-primary text-sm font-medium "
+          className="inline-flex items-center px-2 py-1 rounded bg-primary text-[12px] font-medium "
         >
-          <ArrowLeft size={16} className="mr-2" />
           Back
+          <ArrowLeftCircle size={11} className="ml-2 text-white " />
         </button>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-4">
         {/* Left Sidebar */}
         <div className="md:col-span-1 space-y-4">
           {/* Scholar Profile Card */}
@@ -91,46 +91,57 @@ export default function ViewProjectDetails() {
         </div>
 
         {/* Main Content Area */}
-        <div className="md:col-span-2 space-y-6">
+        <div className="md:col-span-3 space-y-6">
           {/* Milestones Section */}
-          <div className="bg-white rounded-lg shadow-md shadow-gray-100 border border-gray-200 px-6 py-4">
-            <h2 className="text-lg font-semibold mb-4">Milestones</h2>
-            <div className="flex gap-4">
+          <div className="bg-[#f8f9fa] rounded-lg shadow-md shadow-gray-100 border border-gray-200 p-[15px]">
+            {/* <h2 className="text-lg font-semibold mb-4">Milestones</h2> */}
+            <div className="flex ">
               {/* Milestone Navigation */}
-              <div className="space-y-2">
+              <div className="space-y-2 py-2">
                 {project.milestones?.map((milestone, index) => {
                   const milestoneNumber = index + 1;
                   const isSelected = milestoneNum === milestoneNumber.toString();
                   return (
-                    <button
+                    <div
                       key={index}
                       onClick={() => navigate(`/ViewProjectDetails/${projectId}?milestone=${milestoneNumber}`)}
-                      className={`w-40 text-left px-4 py-2 rounded border ${
-                        isSelected
-                          ? "bg-primary"
-                          : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
-                      } text-sm font-medium flex items-center justify-between`}
+                      className={` ${isSelected
+                          ? "bg-white p-2 w-[102%] shadow-[-5px_0px_10px_#ccc] z-[9999999999999]"
+                          : ""
+                        } text-sm font-medium flex items-center justify-between`}
                     >
-                      Milestone {milestoneNumber}
-                      <ChevronsRight size={16} className="" />
-                    </button>
+                      <button
+
+                        onClick={() => navigate(`/ViewProjectDetails/${projectId}?milestone=${milestoneNumber}`)}
+                        className={`w-40 text-left px-4 py-1 rounded border ${isSelected
+                            ? "bg-primary"
+                            : "bg-[#ccc] text-gray-900 border-gray-300 hover:bg-[#268471] hover:text-white  "
+                          } text-sm font-medium flex items-center justify-between`}
+                      >
+                        Milestone {milestoneNumber}
+                        <ChevronsRight size={16} className="" />
+                      </button>
+                    </div>
                   );
                 })}
               </div>
 
               {/* Milestone Details */}
-              <div className="w-full">
+              <div className="w-full bg-white  shadow-[2px_0px_10px_#ccc]  p-[15px]  ">
                 {milestoneNum && project.milestones?.[parseInt(milestoneNum) - 1] ? (
                   (() => {
                     const selectedMilestone = project.milestones[parseInt(milestoneNum) - 1];
                     return (
                       <div className="space-y-4">
                         <div className="flex gap-2">
-                          <button className="inline-flex items-center px-3 py-1  bg-primary text-white text-xs font-medium ">
-                           
+                          <button className="inline-flex items-center px-1.5 py-1  bg-primary text-white text-[14px] font-medium ">
+
                             Milestone Details {milestoneNum}
                           </button>
-                          <button className="inline-flex items-center px-3 py-1 border border-primary text-gray-700 text-xs font-medium hover:bg-primary">
+                          <button
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Click here to share additional documents on your work"
+                            className="inline-flex items-center px-1.5 py-1 border border-primary text-gray-700 text-[14px] font-medium hover:bg-primary">
                             <span className="mr-1"><File size={15} /></span>
                             Attach Additional Files
                           </button>
@@ -150,8 +161,8 @@ export default function ViewProjectDetails() {
                           </p>
                           {selectedMilestone?.writerCode && (
                             <p>
-                            <span className="font-medium">Writer Code:</span> {selectedMilestone.writerCode}
-                          </p>
+                              <span className="font-medium">Writer Code:</span> {selectedMilestone.writerCode}
+                            </p>
                           )}
                         </div>
                         {selectedMilestone.status === "Waiting for Approval" && (
@@ -202,8 +213,8 @@ export default function ViewProjectDetails() {
 
           {/* Payment History Section */}
           {project.paymentHistory && (
-            <div className="bg-white rounded-lg shadow-md shadow-gray-100 border border-gray-200 px-6 py-4">
-              <div className="flex items-center justify-between mb-4">
+            <div className="bg-[#f8f9fa] rounded-lg shadow-md shadow-gray-100 border border-gray-200 p-[15px]">
+              <div className="flex items-center justify-between mb-4 border-b border-gray-300 pb-3">
                 <h2 className="text-lg font-semibold">Payment History</h2>
                 <div className="text-right space-x-3 flex items-center">
                   <p className="text-gray-900 bg-green-50 p-1 rounded font-semibold text-sm">
@@ -215,9 +226,9 @@ export default function ViewProjectDetails() {
                 </div>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-sm">
+                <table className="w-full text-sm bg-white">
                   <thead>
-                    <tr className="border-b border-gray-200">
+                    <tr className="">
                       <th className="text-left py-2 px-3 font-semibold">S.No</th>
                       <th className="text-left py-2 px-3 font-semibold">Milestone</th>
                       <th className="text-left py-2 px-3 font-semibold">Amount Paid</th>
@@ -226,7 +237,7 @@ export default function ViewProjectDetails() {
                   </thead>
                   <tbody>
                     {project.paymentHistory.payments.map((payment, index) => (
-                      <tr key={index} className="border-b border-gray-100">
+                      <tr key={index} className="border-t border-gray-300">
                         <td className="py-2 px-3">{payment.sNo}</td>
                         <td className="py-2 px-3">{payment.milestone}</td>
                         <td className="py-2 px-3">{payment.amountPaid}</td>

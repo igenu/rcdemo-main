@@ -38,7 +38,7 @@ function MyProjectsCard() {
             <div className="flex  justify-between flex-col">
               <div>
                 <h3 className="font-semibold text-sm">{project.name}</h3>
-                
+
               </div>
               <div className="mt-3 flex justify-between items-center gap-5 text-[14px]">
                 <p className="text-gray-600">
@@ -56,11 +56,10 @@ function MyProjectsCard() {
                   <span className="ml-1">{project.createdDate}</span>
                 </p>
                 <button
-                  className={`self-start md:self-auto inline-flex items-center px-3 py-1 rounded text-[12px] ${
-                    isPending(project?.status)
+                  className={`self-start md:self-auto inline-flex items-center px-3 py-1 rounded text-[12px] ${isPending(project?.status)
                       ? "bg-danger"
                       : "border border-emerald-500 text-emerald-600 hover:bg-emerald-50"
-                  } font-medium `}
+                    } font-medium `}
                   onClick={() => {
                     if (isPending(project.status)) {
                       // Open the ModeOfCommunication modal
@@ -72,7 +71,7 @@ function MyProjectsCard() {
                     }
                   }}
                 >
-                  {isPending(project.status) ? "Upload Details" : "View Details"}
+                  {isPending(project.status) ? "Upload Details" : "Show Details"}
                   <ChevronRightCircle size={14} className="ml-1" />
                 </button>
               </div>
@@ -82,14 +81,16 @@ function MyProjectsCard() {
                 {project.milestones?.map((milestone, index) => (
                   <div
                     key={index}
-                    className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 bg-[#f8f9fa] p-2 rounded"
+                    className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 bg-[#f8f9fa] p-3 rounded"
                   >
                     <div className="w-full">
                       <div className="flex items-center justify-between w-full">
                         <p className="font-semibold">{milestone.title}</p>
                         <button
+                          data-tooltip-id="my-tooltip"
+                          data-tooltip-content="View Details"
                           onClick={() => navigate(`/ViewProjectDetails/${project.id}?milestone=${index + 1}`)}
-                          className="self-start inline-flex items-center px-2 py-1 rounded border border-blue-500 text-blue-600 text-[12px] font-medium hover:bg-blue-50"
+                          className="self-start inline-flex items-center px-2 py-1 rounded border border-emerald-500 text-emerald-600 text-[12px] font-medium hover:bg-blue-50"
                         >
                           View Details
                         </button>

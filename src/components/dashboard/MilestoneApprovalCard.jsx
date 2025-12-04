@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import projects from "../../data/projects";
-import { CircleQuestionMark } from "lucide-react";
+import { ChevronRight, CircleQuestionMark } from "lucide-react";
 
 function MilestoneApprovalCard() {
   const navigate = useNavigate();
@@ -74,10 +74,12 @@ function MilestoneApprovalCard() {
               <CircleQuestionMark size={15} />
             </button>
             <button
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="View Details"
               onClick={handleViewDetails}
-              className="inline-flex items-center px-3 py-1 rounded border border-emerald-500 text-emerald-600 text-[12px] font-medium hover:bg-emerald-50"
+              className="inline-flex items-center px-2 py-1 rounded border border-emerald-500 text-emerald-600 text-[12px] font-medium hover:bg-emerald-50"
             >
-              View Details
+              View Details <ChevronRight size={14} className="ml-1" />
             </button>
           </div>
         </div>

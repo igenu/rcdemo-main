@@ -12,6 +12,7 @@ export default function Breadcrumb() {
       "my-queries": "My Queries",
       "call-management": "Call Management",
       "call-history": "Call History",
+      "ViewProjectDetails": "Manage Project",
     };
     return pathMap[path] || path.charAt(0).toUpperCase() + path.slice(1);
   };
@@ -24,7 +25,8 @@ export default function Breadcrumb() {
             to="/"
             className="text-primary hover:underline transition-colors flex items-center gap-2"
           >
-            <Home size={15} /> Dashboard
+            {/* <Home size={15} />  */}
+            Dashboard
           </Link>
           <ChevronRight size={16} className="text-gray-400" />
           <span className="text-gray-800 font-medium">
@@ -36,7 +38,8 @@ export default function Breadcrumb() {
           to="/"
           className="flex items-center hover:text-primary transition-colors gap-2"
         >
-          <Home size={15} /> Dashboard
+          {/* <Home size={15} /> */}
+           Dashboard
         </Link>
       )}
     </nav>

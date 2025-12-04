@@ -4,7 +4,7 @@ export default function HowItWorks() {
   return (
     <div className="w-full">
       <Breadcrumb />
-      <div className="bg-[#f8f9fa] rounded-lg shadow-sm p-6">
+      <div className="bg-[#f8f9fa] rounded-lg shadow-sm p-4">
         <h1 className="text-[18px] font-bold text-gray-800 mb-6 border-b border-gray-300 pb-4">How it Works</h1>
         <div className="w-full">
           <video
