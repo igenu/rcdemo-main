@@ -1,0 +1,40 @@
+#root {
+  max-width: 100%;
+}
+
+.bg-primary{
+  background: #268471;
+  color: white;
+}
+.bg-danger{
+  background-color: #dc3545;
+  color: white;
+}
+
+.text-danger{
+  color: #dc3545;
+}
+.text-primary{
+  color: #268471;
+}
+
+.border-primary{
+  border-color: #268471;
+}
+
+.f-12{
+  font-size: 12px;
+}
+
+.f-13{
+  font-size: 13px;
+}
+
+button:not([disabled]):hover{
+  cursor: pointer;
+}
+
+/* Tooltip styling */
+.bg-primary.text-black {
+  color: black !important;
+}
