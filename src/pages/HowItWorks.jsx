@@ -4,12 +4,12 @@ export default function HowItWorks() {
   return (
     <div className="w-full">
       <Breadcrumb />
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">How it Works</h1>
+      <div className="bg-[#f8f9fa] rounded-lg shadow-sm p-6">
+        <h1 className="text-[18px] font-bold text-gray-800 mb-6 border-b border-gray-300 pb-4">How it Works</h1>
         <div className="w-full">
           <video
             controls
-            className="w-full h-screen rounded-lg shadow-md"
+            className="w-full h-screen rounded-lg shadow-md "
             style={{ maxHeight: "80vh" }}
           >
             <source
